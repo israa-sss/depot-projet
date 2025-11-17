@@ -1,0 +1,11 @@
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html,body { 
+  height: 100%; 
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial; 
+  color:#111; 
+  background: #f6f8fb; 
+}
+header, main, footer { 
+  width: min(1100px, 96%); 
+  margin: 18px auto; 
+}
