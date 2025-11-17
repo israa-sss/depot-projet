@@ -9,3 +9,81 @@ header, main, footer {
   width: min(1100px, 96%); 
   margin: 18px auto; 
 }
+header { display: flex; flex-direction: column; gap:10px; }
+header h1 { font-size: 2; color:#ca0c45; }
+header p { color:#3b4b58; font-size:0.95rem; margin-top:4px; }
+#controls { 
+  margin-top:10px; 
+  display:flex; 
+  gap:10px; 
+  align-items:center; 
+  flex-wrap:wrap; 
+}
+#controls select, #controls button {
+  padding:8px 10px; 
+  border-radius:8px; 
+  border:1px solid #d6dbe3; 
+  background:white; 
+  cursor:pointer;
+}
+#restart {
+  background: #3ab0df !important;
+  color: rgb(8, 6, 6);
+  border: 1px solid #7d2a09;
+}
+
+#shuffle  { 
+  background:#13a065 !important; 
+  color:rgb(10, 9, 9); 
+  border:1px solid #095a7d; 
+}
+#showall  { 
+  background:#98960b !important; 
+  color:rgb(7, 6, 6); 
+  border:2px solid #161616; 
+}
+
+#stats { 
+  background: #ffffff; 
+  border:1px solid #e3e8ef; 
+  padding:10px 12px; 
+  border-radius:10px; 
+  margin-top:10px; 
+  color:#113049; 
+}
+#stats p { font-size:0.95rem; }
+#board {
+  margin-top:14px;
+  display: grid;
+  gap:10px;
+  justify-content: center;
+  grid-template-columns: repeat(auto-fit, minmax(70px, 1fr));
+  align-items: stretch;
+}
+footer { display:flex; gap:20px; justify-content:space-between; align-items:center; margin-top:16px; }
+#bestscores h2 { font-size:1rem; color:#0b3b5a; margin-bottom:6px; }
+#bestscores p { color:#334e63; }
+
+
+#win {
+  position: fixed; inset: 0; display: none;
+  align-items:center; justify-content:center;
+  background: rgba(3,6,12,0.45);
+}
+
+#win > div {
+  background: white; padding:18px; border-radius:12px; width:min(420px,92%); text-align:center;
+  box-shadow: 0 8px 30px rgba(15,23,42,0.18);
+}
+#win h2 { color:#0b6b98; margin-bottom:8px; }
+#win button { margin:8px 6px; padding:8px 12px; border-radius:8px; border: none; cursor:pointer; }
+#playAgain { background:#0b6b98; color:white; }
+#close { background:#e6eef6; color:#0b3b5a; }
+
+
+@media (max-width:600px){
+  #controls { gap:8px; }
+  #board { gap:8px; grid-template-columns: repeat(auto-fit, minmax(64px, 1fr)); }
+}
+
+
