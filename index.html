@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jeu Memory</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <h1>Jeu Memory---Retrouver les paires</h1>
+        <p>Choisis la difficulté et commence à jouer</p>
+        <div id="controls">
+            <label for="difficulte">Difficulté</label>
+            <select name="" id="difficulte">
+                <option value="easy">Facile(8 paires)</option>
+                <option value="medium">Moyenne(16 paires)</option>
+                <option value="hard">Difficile(32 paires)</option>
+            </select>
+            <button id="restart">Redémarrer</button>
+            <button id="shuffle">Mélanger</button>
+            <button id="showall">Montrer tout</button>
+        </div>
+    </header>
+    <main>
+        <section id="stats">
+            <p>
+                 Temps :<strong id="time"> 00:00</strong> |   
+                 Coups :<strong id="moves"> 0</strong> |
+                 Paires trouvées :<strong id="matches"> 0</strong></p>
+        </section>
+        <section id="board" role="grid" aria-label="Plateau de jeu"></section>
+    </main>
+    <footer>
+        <div id="bestscores">
+            <h2>Meilleurs scores (local)</h2>
+            <p id="record">-</p>
+        </div>
+        <div id="win" role="dialog" aria-modal="true" style="display:none;">
+            <div>
+                 <h2>Bravo 🎉</h2>
+                 <p>Tu as terminé en <span id="finalMoves">0</span> coups et <span id="finalTime">00:00</span>.</p>
+                 <button id="playAgain">Rejouer</button>
+                 <button id="close">Fermer</button>
+             </div>
+            </div>
+
+    </footer>
+    <script src="script.js"></script>
+    
+</body>
+</html>
