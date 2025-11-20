@@ -43,15 +43,17 @@ function creerPlateau() {
      const carte = document.createElement("div");
      carte.classList.add("card");
      carte.dataset.symbol = symbol;
+     const inner = document.createElement("div");
+     inner.classList.add("card-inner");
      const front = document.createElement("div");
      front.classList.add("card-front");
      front.textContent = symbol;
      const back = document.createElement("div");
      back.classList.add("card-back");
      back.textContent = "?";
-
-     carte.appendChild(front);
-     carte.appendChild(back);
+     inner.appendChild(front);
+     inner.appendChild(back);
+     carte.appendChild(inner);
      carte.addEventListener("click", retournerCarte);
      board1.appendChild(carte);
     });
@@ -97,4 +99,38 @@ function retournerCarte() {
          }, 1000);
     }
 }
+function resetSelection() {
+    [firstCard, secondCard] = [null, null];
+    lockBoard = false;
+}
+function victoire() {
+    clearInterval(timerInterval);
+    finalMoves1.textContent = moves;
+    finalTime1.textContent = timel.textContent;
+    win1.style.display = "flex";
+}
+playAgain1.addEventListener("click", function () {
+    win1.style.display = "none";
+    creerPlateau();
+});
+
+close1.addEventListener("click", function () {
+    win1.style.display = "none";
+});
+restart1.addEventListener("click", creerPlateau);
+
+shuffle1.addEventListener("click", creerPlateau);
+
+showall1.addEventListener("click", function () {
+     lockBoard = true;
+     document.querySelectorAll(".card").forEach(function (c) {
+        c.classList.add("flipped");
+    });
+    setTimeout(function () {
+        document.querySelectorAll(".card").forEach(function (c) {
+            c.classList.remove("flipped");
+        });
+         lockBoard = false;
+    }, 2000);
+});
 creerPlateau()
