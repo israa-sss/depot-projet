@@ -137,6 +137,15 @@ footer { display:flex; gap:20px; justify-content:space-between; align-items:cent
 #win button { margin:8px 6px; padding:8px 12px; border-radius:8px; border: none; cursor:pointer; }
 #playAgain { background:#0b6b98; color:white; }
 #close { background:#e6eef6; color:#0b3b5a; }
+#son {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    z-index: 10;
+    padding: 5px 5px;
+    font-size: 10px;
+    cursor: pointer;
+  }
 
 
 @media (max-width:600px){

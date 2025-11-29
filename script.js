@@ -158,18 +158,24 @@ showall1.addEventListener("click", function () {
 
 });
 const bg = document.getElementById("bg");
+const b = document.getElementById("son");
 
-bg.addEventListener("loadedmetadata", function () {
-    bg.currentTime = 0; 
+
+bg.playbackRate = 0.8;
+
+
+bg.addEventListener("timeupdate", function() {
+  if (!bg.paused && bg.currentTime >= 24) {
+    bg.currentTime = 0;
+  }
 });
 
-bg.addEventListener("timeupdate", function () {
-    if (bg.currentTime >= 24) { 
-        bg.currentTime = 10; 
-    }
+
+b.addEventListener("click", function() {
+  bg.muted = false;      
+  bg.play();              
+  b.style.display = 'none'; 
 });
-const video = document.getElementById("bg");
-video.playbackRate = 0.8; 
 
 
 
