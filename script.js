@@ -59,6 +59,7 @@ function creerPlateau() {
     });
  startTime = new Date();
  clearInterval(timerInterval);
+ updateTime();
  timerInterval = setInterval(updateTime, 1000);
 }
 function updateTime() {
@@ -107,8 +108,30 @@ function victoire() {
     clearInterval(timerInterval);
     finalMoves1.textContent = moves;
     finalTime1.textContent = timel.textContent;
+    const timeParts = timel.textContent.split(":");
+    const totalSeconds = parseInt(timeParts[0]) * 60 + parseInt(timeParts[1]);
+    const score = Math.round((totalPairs * 1000) / (moves * totalSeconds));
+    let scores = JSON.parse(localStorage.getItem("memory_scores")) || [];
+
+    scores.push({
+        score: score,
+        moves: moves,
+        time: timel.textContent,
+        pairs: totalPairs
+    });
+    scores.sort(function(a, b) {
+        return b.score - a.score;
+    });
+    scores = scores.slice(0, 2);
+    localStorage.setItem("memory_scores", JSON.stringify(scores));
+    const recordElement = document.getElementById("record");
+    recordElement.innerHTML = "";
+    scores.forEach(function(s, index) {
+        recordElement.innerHTML += `${index+1}. Score: ${s.score} pts - Coups: ${s.moves} - Temps: ${s.time} - Paires: ${s.pairs}<br>`;
+    });
     win1.style.display = "flex";
 }
+
 playAgain1.addEventListener("click", function () {
     win1.style.display = "none";
     creerPlateau();
@@ -132,5 +155,22 @@ showall1.addEventListener("click", function () {
         });
          lockBoard = false;
     }, 2000);
+
 });
+const bg = document.getElementById("bg");
+
+bg.addEventListener("loadedmetadata", function () {
+    bg.currentTime = 0; 
+});
+
+bg.addEventListener("timeupdate", function () {
+    if (bg.currentTime >= 24) { 
+        bg.currentTime = 10; 
+    }
+});
+const video = document.getElementById("bg");
+video.playbackRate = 0.8; 
+
+
+
 creerPlateau()

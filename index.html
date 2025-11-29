@@ -7,10 +7,11 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+    <video id="bg" src="background.mp4" autoplay controls loop playsinline></video>
     <header>
         <h1>Jeu Memory---Retrouver les paires</h1>
         <p>Choisis la difficulté et commence à jouer</p>
-        <div id="controls">
+        <div id="control">
             <label for="difficulte">Difficulté</label>
             <select name="" id="difficulte">
                 <option value="easy">Facile(8 paires)</option>
@@ -31,9 +32,11 @@
         </section>
         <section id="board" role="grid" aria-label="Plateau de jeu"></section>
     </main>
+    <br>
+    <br>
     <footer>
         <div id="bestscores">
-            <h2>Meilleurs scores (local)</h2>
+            <h2>Meilleurs scores</h2>
             <p id="record">-</p>
         </div>
         <div id="win" role="dialog" aria-modal="true" style="display:none;">
