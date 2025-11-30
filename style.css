@@ -1,82 +1,116 @@
-* { box-sizing: border-box; margin: 0; padding: 0; }
-html,body { 
-  height: 100%; 
+/*Réinitialisation globale*/
+* { 
+  box-sizing: border-box;
+  margin: 0;               
+  padding: 0;              /* Supprime padd par def */
+}
+
+/* Styles géneraux pour la page*/
+html, body { 
+  height: 100%;             /* Page prend toute la hauteur */
   font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial; 
-  color:#111; 
-  
+  color:#111;               
 }
+
+/*Conteneurs principaux */
 header, main, footer { 
-  width: min(1100px, 96%); 
-  margin: 18px auto; 
+  width: min(1100px, 96%);  /* Largeur max 1100px, sinon 96% de la page */
+  margin: 18px auto;        /* Centre horiz avec marge vert */
 }
-header { display: flex; flex-direction: column; gap:10px; }
-header h1 { font-size: 38px; color:#ca0c45; text-align: center; }
-header p { color:#3b4b58; font-size:20px; margin-top:4px;
-font-weight: bold; }
+
+
+header { 
+  display: flex;             
+  flex-direction: column;    
+  gap:10px;                  /* Espace */
+}
+
+header h1 { 
+  font-size: 38px;           /* Taille titre */
+  color:#ca0c45;             
+  text-align: center;        
+}
+
+header p { 
+  color:#3b4b58;             
+  font-size:20px;            
+  margin-top:4px;
+  font-weight: bold;         
+}
+
 #control { 
-  margin-top:10px; 
-  display:flex; 
-  gap:10px; 
-  align-items:center; 
-  flex-wrap:wrap; 
-  font-weight: bold;
-  color: #ce5e89;
+  margin-top:10px;           
+  display:flex;              
+  gap:10px;                  
+  align-items:center;        
+  flex-wrap:wrap;            
+  font-weight: bold;         
+  color: #ce5e89;            
 }
-#control select, #control button {
-  padding:8px 10px; 
-  border-radius:8px; 
+
+#control select, #control button{
+  padding:8px 10px;          
+  border-radius:8px;         
   border:1px solid #d6dbe3; 
   background:rgb(235, 232, 233); 
-  cursor:pointer;
+  cursor:pointer;            /* Curseur en main pour indiquer clic */
 }
-
 .card {
-  position: relative;
-  width: 100%;
-  padding-top: 100%; 
-  perspective: 1000px;
-  cursor: pointer;
+  position: relative;        
+  width: 100%;               
+  padding-top: 100%;         
+  perspective: 1000px;       /* Effet 3D pour la rotation */
+  cursor: pointer;           
   display: block;
 }
+
 .card > .card-inner {
-  position: absolute;
-  inset: 0;
-  transition: transform 420ms cubic-bezier(.2,.9,.3,1);
-  transform-style: preserve-3d;
-}
-.card.flipped > .card-inner {
-  transform: rotateY(180deg);
-}
-.card-front, .card-back {
-  position: absolute;
-  inset: 0;
-  border-radius: 8px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  backface-visibility: hidden;
-  font-size: clamp(20px, 3.5vw, 32px);
-  user-select: none;
-}
-.card-back {
-  background: linear-gradient(180deg,#1f2937,#111827);
-  color: #fff;
-  transform: rotateY(0deg);
-  box-shadow: 0 4px 8px rgba(16,24,40,0.06);
+  position: absolute;        
+  inset: 0;                  
+  transition: transform 420ms cubic-bezier(.2,.9,.3,1); /* Animation rotation */
+  transform-style: preserve-3d; /* Préserve l'effet 3D pour les faces */
 }
 
+.card.flipped > .card-inner {
+  transform: rotateY(180deg); /* Carte retournee */
+}
+
+.card-front, .card-back {
+  position: absolute;        
+  inset: 0;                  
+  border-radius: 8px;        
+  display: flex;             
+  align-items: center;       
+  justify-content: center;   
+  backface-visibility: hidden; /* Cache la face arrière quand visible */
+  font-size: clamp(20px, 3.5vw, 32px); 
+  user-select: none;         
+}
+
+.card-back {
+  background: linear-gradient(180deg,#1f2937,#111827); /* Dégradé sombre */
+  color: #fff;            
+  transform: rotateY(0deg);  
+  box-shadow: 0 4px 8px rgba(16,24,40,0.06); 
+}
+
+/* Face avant des cartes */
 .card-front {
-  background: linear-gradient(180deg,#fff,#f1f5f9);
+  background: linear-gradient(180deg,#fff,#f1f5f9); /* Dégradé clair */
   color: #0b3b5a;
-  transform: rotateY(180deg);
-  border:1px solid #e6eef6;
-  font-weight: 600;
+  transform: rotateY(180deg); /* Retour initial pour animation */
+  border:1px solid #e6eef6;  
+  font-weight: 600;           
   box-shadow: 0 2px 6px rgba(11,59,90,0.06);
 }
+
+/* Hover et focus sur cartes*/
 .card:focus-within, .card:hover {
   outline: 3px solid rgba(11,107,152,0.12);
   transform: translateY(-2px);
 }
+
+/*Boutons  */
 #restart {
   background: #3ab0df !important;
   color: rgb(8, 6, 6);
@@ -88,6 +122,7 @@ font-weight: bold; }
   color:rgb(10, 9, 9); 
   border:1px solid #095a7d; 
 }
+
 #showall  { 
   background:#f2fa86 !important; 
   color:rgb(7, 6, 6); 
@@ -95,7 +130,6 @@ font-weight: bold; }
 }
 
 #stats { 
-   
   border:1px solid #e3e8ef; 
   padding:10px 12px; 
   border-radius:10px; 
@@ -103,26 +137,45 @@ font-weight: bold; }
   display: inline-block;  
   text-align: right ;   
 }
+
 #stats p { 
-   font-size:15px;
-   text-align: right ;
-   margin:0;}
+  font-size:15px;
+  text-align: right ;
+  margin:0;
+}
+
+/*Plateau de jeu */
 #board {
-  width: min(750px, 96%);            
+  width: min(750px, 96%);             
   margin: 18px auto;                
   padding: 16px;                   
   display: grid;
-  gap: 12px;
-  justify-content: center;
-  justify-items: center;
-  grid-template-columns: repeat(8, 1fr);
+  gap: 12px;                      
+  justify-content: center;         
+  justify-items: center;           
+  grid-template-columns: repeat(8, 1fr); /* 8 colonnes fixes */
   align-items: stretch;
 }
-footer { display:flex; gap:20px; justify-content:space-between; align-items:center; margin-top:16px; }
-#bestscores h2 { font-size:20px; color:#dfb1d7; margin-bottom:6px; }
-#bestscores p { color:#e5e7e9; }
 
+footer { 
+  display:flex; 
+  gap:20px; 
+  justify-content:space-between; 
+  align-items:center; 
+  margin-top:16px; 
+}
 
+#bestscores h2 { 
+  font-size:20px; 
+  color:#dfb1d7; 
+  margin-bottom:6px; 
+}
+
+#bestscores p { 
+  color:#e5e7e9; 
+}
+
+/*Fenetre de victoire */
 #win {
   position: fixed; inset: 0; display: none;
   align-items:center; justify-content:center;
@@ -133,10 +186,17 @@ footer { display:flex; gap:20px; justify-content:space-between; align-items:cent
   background: white; padding:18px; border-radius:12px; width:min(420px,92%); text-align:center;
   box-shadow: 0 8px 30px rgba(15,23,42,0.18);
 }
+
 #win h2 { color:#0b6b98; margin-bottom:8px; }
-#win button { margin:8px 6px; padding:8px 12px; border-radius:8px; border: none; cursor:pointer; }
+
+#win button { 
+  margin:8px 6px; padding:8px 12px; border-radius:8px; border: none; cursor:pointer; 
+}
+
 #playAgain { background:#0b6b98; color:white; }
 #close { background:#e6eef6; color:#0b3b5a; }
+
+/* Bouton son  */
 #son {
     position: absolute;
     top: 20px;
@@ -145,13 +205,15 @@ footer { display:flex; gap:20px; justify-content:space-between; align-items:cent
     padding: 5px 5px;
     font-size: 10px;
     cursor: pointer;
-  }
+}
 
-
+/*  Media query pour petits écrans  */
 @media (max-width:600px){
   #controls { gap:8px; }
   #board { gap:8px; grid-template-columns: repeat(auto-fit, minmax(64px, 1fr)); }
 }
+
+/* Background video  */
 #bg {
   position: fixed;
   top: 0;
@@ -160,7 +222,4 @@ footer { display:flex; gap:20px; justify-content:space-between; align-items:cent
   height: 100%;
   object-fit: cover;
   z-index: -1; 
-  
 }
-
-
